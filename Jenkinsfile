@@ -6,6 +6,7 @@ pipeline {
       steps {
         sh "mkdir -p target/a.b.c"
         sh "touch target/a.b.c/test.sql"
+	sh "touch target/a.b.c/xyz.sql"     
         sh "chmod 777 -R target/"
         sh "find -L ./target -type f > delfile.txt"
         sh "cat delfile.txt"
@@ -21,7 +22,7 @@ pipeline {
 					do
                     find . -name "$line" -delete
 					done <delfile.txt \' > del.sh'''
-				
+	                        sh "cat del.sh"
 				sh "sh del.sh"
 				sh "rm -rf delfile.txt del.sh"
     }
