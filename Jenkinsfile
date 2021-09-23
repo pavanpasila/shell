@@ -10,7 +10,9 @@ pipeline {
         sh "find -L ./target -type f > delfile.txt"
         sh "cat delfile.txt"
         sh " sed -i 's/.\\/target\\//\\//g' delfile.txt"
+        sh "cat delfile.txt"
         sh " sed -i 's/\\///'  delfile.txt"
+        sh "cat delfile.txt"
       }
     }
   }
