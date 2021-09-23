@@ -29,7 +29,7 @@ pipeline {
 					done <delfile.txt \' > del.sh'''
 	                        sh "cat del.sh"
 				sh "sh del.sh"
-				sh "rm -rf delfile.txt del.sh"
+				// sh "rm -rf delfile.txt del.sh"
     }
     }
    }
