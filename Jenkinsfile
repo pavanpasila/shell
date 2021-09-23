@@ -15,5 +15,16 @@ pipeline {
         sh "cat delfile.txt"
       }
     }
+   stage ("delete lower branch files") {
+    steps {
+     sh label: '', script: '''echo \'while  read -r line
+					do
+                    find . -name "$line" -delete
+					done <delfile.txt \' > del.sh'''
+				
+				sh "sh del.sh"
+				sh "rm -rf delfile.txt del.sh"
+    }
+   }
   }
 }
