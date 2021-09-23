@@ -18,6 +18,11 @@ pipeline {
     }
    stage ("delete lower branch files") {
     steps {
+	     checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'MyRepo']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'pavan_github', url: 'https://github.com/pavanpasila/targetrepo.git']]])
+			  
+			  sh "cp delfile.txt ./MyRepo"
+			  
+			  dir("MyRepo"){
      sh label: '', script: '''echo \'while  read -r line
 					do
                     find . -name "$line" -delete
@@ -25,6 +30,7 @@ pipeline {
 	                        sh "cat del.sh"
 				sh "sh del.sh"
 				sh "rm -rf delfile.txt del.sh"
+    }
     }
    }
   }
