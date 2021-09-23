@@ -30,7 +30,7 @@ pipeline {
 	                        sh "cat del.sh"
 				sh "sh del.sh"
 				// sh "rm -rf delfile.txt del.sh"
-				  sh "echo test purpose"
+				  sh "echo 'test purpose' "
     }
     }
    }
